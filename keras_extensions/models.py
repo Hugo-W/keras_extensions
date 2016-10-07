@@ -1,4 +1,5 @@
-from keras.models import Model, standardize_X
+from keras.models import Model
+from keras.preprocessing.image import ImageDataGenerator
 from keras.layers import containers
 from keras import optimizers, objectives
 from keras import backend as K
@@ -49,7 +50,10 @@ class SingleLayerUnsupervised(Model, containers.Sequential):
     def fit(self, X, batch_size=128, nb_epoch=100, verbose=1, callbacks=[],
             validation_split=0., validation_data=None, shuffle=True, show_accuracy=False):
 
-        X = standardize_X(X)
+        idg = ImageDataGenerator(zca_whitening=False, featurewise_center=True, featurewise_std_normalization=True)
+        idg.fit(X)
+        X = idg.standardize(X.copy())
+        #X = standardize_X(X)
 
         val_f = None
         val_ins = None
