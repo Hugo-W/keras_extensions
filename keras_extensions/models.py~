@@ -55,7 +55,7 @@ class SingleLayerUnsupervised(Sequential):
 
         idg = ImageDataGenerator(zca_whitening=False, featurewise_center=True, featurewise_std_normalization=True)
         idg.fit(X)
-        X = idg.standardize(X)
+        X = idg.standardize(X.copy())
         #X = standardize_X(X)
 
         val_f = None

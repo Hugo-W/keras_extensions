@@ -46,7 +46,7 @@ class RBM(Layer):
             kwargs['input_shape'] = (self.input_dim,)
         super(RBM, self).__init__(**kwargs)
         
-    def build(self, input_shape):
+   # def build(self, input_shape):
 
         assert len(input_shape) == 2
         input_dim = input_shape[1]

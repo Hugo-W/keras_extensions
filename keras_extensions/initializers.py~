@@ -1,7 +1,7 @@
 import numpy as np
 from keras.initializations import get_fans, uniform
 
-def glorot_uniform_sigm(shape, name=None, dim_ordering='th'):
+def glorot_uniform_sigm(shape):
     """
     Glorot style weight initializer for sigmoid activations.
     
@@ -12,6 +12,6 @@ def glorot_uniform_sigm(shape, name=None, dim_ordering='th'):
       +/- 4 sqrt(6 / (fan_in + fan_out)) when sigmoid activations are used.
     See: http://deeplearning.net/tutorial/mlp.html#going-from-logistic-regression-to-mlp
     """
-    fan_in, fan_out = get_fans(shape, dim_ordering=dim_ordering)
+    fan_in, fan_out = get_fans(shape)
     s = 4. * np.sqrt(6. / (fan_in + fan_out))
-    return uniform(shape, s, name=name)
+    return uniform(shape, s)

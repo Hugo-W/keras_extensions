@@ -26,8 +26,7 @@ class DBN(object):
         self.Ws  = []
 
         # BUILDING layers? (first layer only?):
-        for rbm in self.rbms:
-            rbm.build(input_shape=(rbm.input_dim,None))
+        self.rbms[0].build(input_shape=(self.rbms[0].input_dim,None))
 
         # building the list of DBN parameters
         self.bs.append(self.rbms[0].bx)

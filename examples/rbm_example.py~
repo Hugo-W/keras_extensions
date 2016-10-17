@@ -93,7 +93,7 @@ def main():
 
     # generate hidden features from input data
     print('Creating inference model...')
-    h_given_x = rbm.get_h_given_x_layer(as_initial_layer=True)
+    h_given_x = rbm.get_h_given_x_layer()
     inference_model = Sequential([h_given_x, SampleBernoulli(mode='maximum_likelihood')])
 
     print('Compiling Theano graph...')
